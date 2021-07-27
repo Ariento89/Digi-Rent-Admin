@@ -1,0 +1,69 @@
+import PropTypes from "prop-types";
+import { useState } from "react";
+import DigiRentLogo from "../../assets/images/logo.png";
+import browserHistory from "../../browserHistory";
+import { GREY_2 } from "../../consts/colors";
+import MenuItem from "../layout/MenuItem";
+
+export default function Sidebar({ menuItems }) {
+  const [activeMenuItem, setActiveMenuItem] = useState();
+
+  useState(() => {
+    setActiveMenuItem(browserHistory.location.pathname);
+  }, []);
+
+  const handleLogout = () => {};
+
+  const handleClick = (url) => {
+    browserHistory.push(url);
+    setActiveMenuItem(url);
+  };
+
+  return (
+    <div
+      style={{
+        maxWidth: "222px",
+        height: "100vh",
+        padding: "16px",
+        borderRight: `2px solid ${GREY_2}`,
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
+      }}
+    >
+      <div>
+        <div style={{ cursor: "pointer" }} onClick={() => browserHistory.push("/")}>
+          <img src={DigiRentLogo} alt="Digi Rent Logo" width="100%" />
+        </div>
+        <div style={{ width: "100%", marginTop: "20px" }}>
+          {menuItems.map((item, index) => (
+            <MenuItem
+              key={`menu-item-${index}`}
+              url={item.url}
+              icon={item.icon}
+              label={item.label}
+              onClick={handleClick}
+              isActive={item.url === activeMenuItem}
+            />
+          ))}
+        </div>
+      </div>
+      <MenuItem
+        key="menu-item-logout"
+        url="/login"
+        icon="login"
+        label="Log Out"
+        onClick={handleLogout}
+        isActive={false}
+      />
+    </div>
+  );
+}
+
+Sidebar.propTypes = {
+  menuItems: PropTypes.array,
+};
+
+Sidebar.defaultProps = {
+  menuItems: [],
+};
