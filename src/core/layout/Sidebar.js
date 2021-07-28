@@ -1,3 +1,4 @@
+import { head } from "lodash";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import DigiRentLogo from "../../assets/images/logo.png";
@@ -6,7 +7,7 @@ import { GREY_2 } from "../../consts/colors";
 import MenuItem from "../layout/MenuItem";
 
 export default function Sidebar({ menuItems }) {
-  const [activeMenuItem, setActiveMenuItem] = useState();
+  const [activeMenuItem, setActiveMenuItem] = useState(null);
 
   useState(() => {
     setActiveMenuItem(browserHistory.location.pathname);
@@ -15,8 +16,18 @@ export default function Sidebar({ menuItems }) {
   const handleLogout = () => {};
 
   const handleClick = (url) => {
-    browserHistory.push(url);
-    setActiveMenuItem(url);
+    const menuItem = menuItems.find((item) => item.url === url);
+    if (!menuItem?.children) {
+      browserHistory.push(url);
+    }
+    // the url.split() here is  to keep submenus open when clicked,
+    // e.g.: in /users/tentants we get only the "/users" part of the url
+    const splittedUrl = url.split("/");
+    let path = splittedUrl[1];
+    if (splittedUrl.length === 1) {
+      path = splittedUrl[0];
+    }
+    setActiveMenuItem(`/${path}`);
   };
 
   return (
@@ -42,6 +53,7 @@ export default function Sidebar({ menuItems }) {
               url={item.url}
               icon={item.icon}
               label={item.label}
+              children={item.children}
               onClick={handleClick}
               isActive={item.url === activeMenuItem}
             />

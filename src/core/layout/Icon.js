@@ -6,6 +6,8 @@ import ReceiptIcon from "../icons/ReceiptIcon";
 import BillIcon from "../icons/BillIcon";
 import KeyboardIcon from "../icons/KeyboardIcon";
 import LoginIcon from "../icons/LoginIcon";
+import DragIcon from "../icons/DragIcon";
+import ArrowUpIcon from "../icons/ArrowUpIcon";
 
 export default function Icon({ name, size, color }) {
   return (
@@ -24,6 +26,8 @@ export default function Icon({ name, size, color }) {
       {name === "bill" && <BillIcon color={color} />}
       {name === "keyboard" && <KeyboardIcon color={color} />}
       {name === "login" && <LoginIcon color={color} />}
+      {name === "drag" && <DragIcon color={color} />}
+      {name === "arrow-up" && <ArrowUpIcon color={color} />}
     </div>
   );
 }

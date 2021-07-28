@@ -17,6 +17,16 @@ export default function BaseLayout({ children }) {
             label: "Users",
             url: "/users",
             icon: "users",
+            children: [
+              {
+                label: "Landlords",
+                url: "/landlords",
+              },
+              {
+                label: "Tentants",
+                url: "/tentants",
+              },
+            ],
           },
           {
             label: "Properties",
@@ -24,19 +34,9 @@ export default function BaseLayout({ children }) {
             icon: "properties",
           },
           {
-            label: "Payments",
-            url: "/payments",
+            label: "Amenities",
+            url: "/amenities",
             icon: "receipt",
-          },
-          {
-            label: "Contract",
-            url: "/contract",
-            icon: "bill",
-          },
-          {
-            label: "Blog",
-            url: "/blog",
-            icon: "keyboard",
           },
         ]}
       />
