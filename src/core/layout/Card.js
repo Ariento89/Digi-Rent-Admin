@@ -8,7 +8,7 @@ export default function Card({ title, children }) {
         flexDirection: "column",
         backgroundColor: "#fff",
         width: "100%",
-        padding: "25px 20px",
+        padding: "25px",
         borderRadius: "4px",
       }}
     >

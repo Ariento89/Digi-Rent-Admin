@@ -74,7 +74,7 @@ export default function DashboardScene() {
               datasets: [
                 {
                   label: "# of Votes",
-                  data: [357, 296],
+                  data: [700, 1023],
                 },
               ],
             }}
@@ -88,7 +88,7 @@ export default function DashboardScene() {
               datasets: [
                 {
                   label: "# of Votes",
-                  data: [137, 276, 192, 243],
+                  data: [533, 112, 214, 244],
                 },
               ],
             }}
@@ -98,7 +98,7 @@ export default function DashboardScene() {
           <Row>
             <AbsoluteValueIndicator
               label="Landlords Registered"
-              value="1250"
+              value="412"
               icon="tick-square"
               primaryColor="#41a2f9"
               secondaryColor="#ebf5ff"
@@ -108,7 +108,7 @@ export default function DashboardScene() {
           <Row>
             <AbsoluteValueIndicator
               label="Landlords Active"
-              value="7260"
+              value="543"
               icon="radar"
               primaryColor="#00bfb1"
               secondaryColor="#effbf2"
