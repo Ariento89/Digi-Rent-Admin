@@ -52,8 +52,14 @@ export default function MenuItem({ label, url, icon, children, isActive, onClick
             transition: "all .5 ease-in-out",
           }}
         >
-          {children.map((item) => (
-            <SubmenuItem label={item.label} url={item.url} isActive={false} onClick={() => onClick(url + item.url)} />
+          {children.map((item, index) => (
+            <SubmenuItem
+              key={`submenu-item-${index}-${item.url}`}
+              label={item.label}
+              url={item.url}
+              isActive={false}
+              onClick={() => onClick(url + item.url)}
+            />
           ))}
         </div>
       )}

@@ -39,7 +39,20 @@ export default function Icon({ name, size, color }) {
 }
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(["home"]).isRequired,
+  name: PropTypes.oneOf([
+    "home",
+    "users",
+    "properties",
+    "receipt",
+    "bill",
+    "keyboard",
+    "login",
+    "drag",
+    "arrow-up",
+    "tick-square",
+    "radar",
+    "inbox",
+  ]).isRequired,
   size: PropTypes.oneOf(["sm", "md"]),
   color: PropTypes.string,
 };
