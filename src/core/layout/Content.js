@@ -9,6 +9,8 @@ export default function Content({ children }) {
         height: "100%",
         minHeight: "calc(100vh - 80px)",
         backgroundColor: GREY_1,
+        overflowY: "scroll",
+        paddingBottom: "120px",
       }}
     >
       {children}

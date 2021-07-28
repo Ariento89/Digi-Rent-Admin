@@ -5,7 +5,7 @@ import Content from "./Content";
 
 export default function BaseLayout({ children }) {
   return (
-    <div style={{ height: "100vh", display: "flex", flexDirection: "row" }}>
+    <div style={{ height: "100vh", display: "flex", flexDirection: "row", overflow: "hidden" }}>
       <Sidebar
         menuItems={[
           {

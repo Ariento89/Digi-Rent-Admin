@@ -102,6 +102,7 @@ export default function DashboardScene() {
               icon="tick-square"
               primaryColor="#41a2f9"
               secondaryColor="#ebf5ff"
+              size="md"
             />
           </Row>
           <Row>
@@ -111,6 +112,7 @@ export default function DashboardScene() {
               icon="radar"
               primaryColor="#00bfb1"
               secondaryColor="#effbf2"
+              size="md"
             />
           </Row>
         </Column>
