@@ -22,3 +22,7 @@
   font-size: 14px;
   color: #73797f;
 }
+
+.core-column:first-of-type {
+  margin-left: 0 !important;
+}

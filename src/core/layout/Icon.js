@@ -8,6 +8,9 @@ import KeyboardIcon from "../icons/KeyboardIcon";
 import LoginIcon from "../icons/LoginIcon";
 import DragIcon from "../icons/DragIcon";
 import ArrowUpIcon from "../icons/ArrowUpIcon";
+import TickSquareIcon from "../icons/TickSquareIcon";
+import RadarIcon from "../icons/RadarIcon";
+import InboxIcon from "../icons/InboxIcon";
 
 export default function Icon({ name, size, color }) {
   return (
@@ -28,6 +31,9 @@ export default function Icon({ name, size, color }) {
       {name === "login" && <LoginIcon color={color} />}
       {name === "drag" && <DragIcon color={color} />}
       {name === "arrow-up" && <ArrowUpIcon color={color} />}
+      {name === "tick-square" && <TickSquareIcon color={color} />}
+      {name === "radar" && <RadarIcon color={color} />}
+      {name === "inbox" && <InboxIcon color={color} />}
     </div>
   );
 }

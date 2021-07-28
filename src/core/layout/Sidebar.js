@@ -1,4 +1,3 @@
-import { head } from "lodash";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import DigiRentLogo from "../../assets/images/logo.png";
