@@ -11,6 +11,10 @@ import ArrowUpIcon from "../icons/ArrowUpIcon";
 import TickSquareIcon from "../icons/TickSquareIcon";
 import RadarIcon from "../icons/RadarIcon";
 import InboxIcon from "../icons/InboxIcon";
+import RemoveIcon from "../icons/RemoveIcon";
+import EditIcon from "../icons/EditIcon";
+import FavoriteIcon from "../icons/FavoriteIcon";
+import HeartIcon from "../icons/HeartIcon";
 
 export default function Icon({ name, size, color }) {
   return (
@@ -34,6 +38,10 @@ export default function Icon({ name, size, color }) {
       {name === "tick-square" && <TickSquareIcon color={color} />}
       {name === "radar" && <RadarIcon color={color} />}
       {name === "inbox" && <InboxIcon color={color} />}
+      {name === "remove" && <RemoveIcon color={color} />}
+      {name === "edit" && <EditIcon color={color} />}
+      {name === "favorite" && <FavoriteIcon color={color} />}
+      {name === "heart" && <HeartIcon color={color} />}
     </div>
   );
 }
@@ -52,6 +60,10 @@ Icon.propTypes = {
     "tick-square",
     "radar",
     "inbox",
+    "remove",
+    "edit",
+    "favorite",
+    "heart",
   ]).isRequired,
   size: PropTypes.oneOf(["sm", "md"]),
   color: PropTypes.string,

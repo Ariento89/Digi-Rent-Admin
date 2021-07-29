@@ -2,6 +2,9 @@ import Column from "../../core/layout/Column";
 import Row from "../../core/layout/Row";
 import AbsoluteValueIndicator from "../../core/indicators/AbsoluteValueIndicator";
 import DoughnutChartIndicator from "../../core/indicators/DoughnutChartIndicator";
+import TableIndicator from "../../core/indicators/TableIndicator";
+import { BLUE_1, GREY_6, RED_1 } from "../../consts/colors";
+import Button from "../../core/form/Button";
 
 export default function DashboardScene() {
   return (
@@ -115,6 +118,77 @@ export default function DashboardScene() {
               size="md"
             />
           </Row>
+        </Column>
+      </Row>
+      <Row>
+        <Column size={7}>
+          <TableIndicator
+            label="Blog details"
+            columns={[
+              {
+                accessor: "postNumber",
+                Cell: (props) => (
+                  <b style={{ fontSize: "16px", color: "#000", fontFamily: "GothamMedium" }}>{props.value}</b>
+                ),
+              },
+              { accessor: "postTitle" },
+              {
+                accessor: "actions",
+                Cell: (props) => (
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Button icon="remove" fontColor={RED_1} iconSize="md" isIconButton={true} />
+                    <Button icon="edit" fontColor={GREY_6} iconSize="md" isIconButton={true} />
+                    <Button icon="favorite" fontColor={BLUE_1} iconSize="md" isIconButton={true} />
+                  </div>
+                ),
+              },
+              {
+                accessor: "favorites",
+                Cell: (props) => (
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Button icon="heart" fontColor={RED_1} iconSize="md" isIconButton={true} />
+                    <span style={{ fontSize: "16px" }}>{props.value}</span>
+                  </div>
+                ),
+              },
+            ]}
+            data={[
+              {
+                postNumber: "#1",
+                postTitle: "Never Gonna Done Again",
+                favorites: "789",
+              },
+              {
+                postNumber: "#2",
+                postTitle: "Never Gonna Done Again",
+                favorites: "789",
+              },
+              {
+                postNumber: "#3",
+                postTitle: "Never Gonna Done Again",
+                favorites: "789",
+              },
+              {
+                postNumber: "#4",
+                postTitle: "Never Gonna Done Again",
+                favorites: "789",
+              },
+            ]}
+          />
+        </Column>
+        <Column size={5}>
+          <DoughnutChartIndicator
+            label="Unique Website Visitor"
+            data={{
+              labels: ["Computer", "Mobile", "Others"],
+              datasets: [
+                {
+                  label: "# of Votes",
+                  data: [482, 127, 276],
+                },
+              ],
+            }}
+          />
         </Column>
       </Row>
     </div>

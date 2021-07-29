@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "GothamMedium";
-  src: url(./assets/fonts/GothamMedium.ttf) format("truetype");
+  src: url(./assets/fonts/GothamMedium.otf) format("opentype");
 }
 
 * {
