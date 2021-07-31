@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Card from "../layout/Card";
-import Table from "../layout/Table";
+import Card from "../../layout/Card";
+import Table from "../../layout/Table";
 
 export default function TableIndicator({ label, columns, data }) {
   return (

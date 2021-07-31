@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { GREY_6 } from "../../consts/colors";
-import Card from "../layout/Card";
+import { GREY_6 } from "../../../consts/colors";
+import Card from "../../layout/Card";
 import AbsoluteValueIndicatorIcon from "./AbsoluteValueIndicatorIcon";
 
 export default function AbsoluteValueIndicator({ icon, label, value, size, primaryColor, secondaryColor }) {

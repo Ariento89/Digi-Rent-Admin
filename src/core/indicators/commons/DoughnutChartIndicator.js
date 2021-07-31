@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import DoughnutChart from "../charts/DoughnutChart";
-import Card from "../layout/Card";
+import DoughnutChart from "../../charts/DoughnutChart";
+import Card from "../../layout/Card";
 
 export default function DoughnutChartIndicator({ label, data }) {
   return (

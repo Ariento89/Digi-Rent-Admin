@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Icon from "../layout/Icon";
+import Icon from "../../layout/Icon";
 
 export default function AbsoluteValueIndicatorIcon({ name, primaryColor, secondaryColor }) {
   return (
