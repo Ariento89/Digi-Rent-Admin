@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default function PropertiesIcon({ color }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M5.02501 13.5H3.11252C2.04002 13.5 1.5 12.96 1.5 11.8875V3.11252C1.5 2.04002 2.04002 1.5 3.11252 1.5H6.33751C7.41001 1.5 7.94998 2.04002 7.94998 3.11252V4.5"
         stroke={color}
