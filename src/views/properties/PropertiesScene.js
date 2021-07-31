@@ -4,6 +4,9 @@ import PropertiesDisplayedAbsoluteValueIndicator from "../../core/indicators/Pro
 import TotalApplicationsAbsoluteValueIndicator from "../../core/indicators/TotalApplicationsAbsoluteValueIndicator";
 import Column from "../../core/layout/Column";
 import Row from "../../core/layout/Row";
+import PageTitle from "../../core/layout/PageTitle";
+import Separator from "../../core/layout/Separator";
+import PropertiesFilter from "./PropertiesFilter";
 
 export default function PropertiesScene() {
   return (
@@ -21,6 +24,11 @@ export default function PropertiesScene() {
         <Column size={3}>
           <TotalApplicationsAbsoluteValueIndicator />{" "}
         </Column>
+      </Row>
+      <Separator size="md" />
+      <Row alignItems="center" justifyContent="space-between">
+        <PageTitle title="Properties List" />
+        <PropertiesFilter />
       </Row>
     </div>
   );

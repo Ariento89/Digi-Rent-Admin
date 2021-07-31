@@ -21,16 +21,30 @@ export default function Button({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        width: isIconButton ? "32px" : "220px",
-        height: isIconButton ? "32px" : "44px",
+        minWidth: isIconButton ? "auto" : "120px",
+        width: isIconButton ? "32px" : "auto",
+        height: isIconButton ? "32px" : "40px",
         outline: 0,
+        padding: isIconButton ? "auto" : "0 20px",
         border: `1px solid ${backgroundColor}`,
+        borderRadius: "7px",
         cursor: "pointer",
         ...style,
       }}
     >
       {icon && <Icon name={icon} size={iconSize} color={fontColor} />}
-      {label && <span style={{ fontFamily: "Lato", fontSize: "16px", color: fontColor }}>{label}</span>}
+      {label && (
+        <span
+          style={{
+            color: fontColor,
+            fontSize: "14px",
+            lineHeight: "20px",
+            marginLeft: icon && !isIconButton ? "12px" : "auto",
+          }}
+        >
+          {label}
+        </span>
+      )}
     </button>
   );
 }
@@ -49,6 +63,7 @@ Button.propTypes = {
 Button.defaultProps = {
   label: null,
   icon: null,
+  isIconButton: false,
   htmlType: "button",
   onClick: () => {},
   style: {},

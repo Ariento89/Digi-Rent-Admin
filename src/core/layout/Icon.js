@@ -16,6 +16,7 @@ import EditIcon from "../icons/EditIcon";
 import FavoriteIcon from "../icons/FavoriteIcon";
 import HeartIcon from "../icons/HeartIcon";
 import DisplayIcon from "../icons/DisplayIcon";
+import AddIcon from "../icons/AddIcon";
 
 export default function Icon({ name, size, color }) {
   return (
@@ -44,6 +45,7 @@ export default function Icon({ name, size, color }) {
       {name === "favorite" && <FavoriteIcon color={color} />}
       {name === "heart" && <HeartIcon color={color} />}
       {name === "display" && <DisplayIcon color={color} />}
+      {name === "add" && <AddIcon color={color} />}
     </div>
   );
 }
@@ -67,6 +69,7 @@ Icon.propTypes = {
     "favorite",
     "heart",
     "display",
+    "add",
   ]).isRequired,
   size: PropTypes.oneOf(["sm", "md"]),
   color: PropTypes.string,

@@ -5,6 +5,7 @@ export const GREY_4 = "#f9f9f9";
 export const GREY_5 = "#989ca1";
 export const GREY_6 = "#666666";
 export const GREY_7 = "#EFF0F0";
+export const GREY_8 = "#373F48";
 
 export const BLUE_1 = "#41a2f9";
 
