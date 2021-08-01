@@ -4,6 +4,7 @@ import browserHistory from "./browserHistory";
 import UsersScene from "./views/users/UsersScene";
 import NotFoundScene from "./views/not-found/NotFoundScene";
 import PropertiesScene from "./views/properties/PropertiesScene";
+import AmenitiesScene from "./views/amenities/AmenitiesScene";
 
 export default function Routes() {
   return (
@@ -11,6 +12,7 @@ export default function Routes() {
       <Switch>
         <Route exact key="dashboard" path="/" component={DashboardScene} />
         <Route exact key="properties" path="/properties" component={PropertiesScene} />
+        <Route exact key="amenities" path="/amenities" component={AmenitiesScene} />
         <Route exact key="users" path="/users" component={UsersScene} />
         <Route path="*" component={NotFoundScene} />
       </Switch>
