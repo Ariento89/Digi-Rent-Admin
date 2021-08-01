@@ -4,7 +4,7 @@ import { usePagination, useTable } from "react-table";
 import { GREY_2, GREY_8 } from "../../consts/colors";
 import TableFooter from "./TableFooter";
 
-export default function Table({ columns, data, showHeader }) {
+export default function Table({ columns, data, showHeader, showFooter }) {
   const memoColumns = useMemo(() => columns, [columns]);
   const memoData = useMemo(() => data, [data]);
   const tableInstance = useTable(
@@ -15,7 +15,14 @@ export default function Table({ columns, data, showHeader }) {
 
   return (
     <>
-      <table {...getTableProps()} style={{ width: "100%", marginTop: showHeader ? "auto" : "-40px" }}>
+      <table
+        {...getTableProps({
+          style: {
+            width: "100%",
+            marginTop: showHeader ? "auto" : "-40px",
+          },
+        })}
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -25,7 +32,7 @@ export default function Table({ columns, data, showHeader }) {
                     style: {
                       marginBottom: "18px",
                       minWidth: column.minWidth,
-                      maxWidth: column.width,
+                      maxWidth: column.maxWidth,
                       width: column.width,
                       textAlign: column.textAlign ? column.textAlign : "left",
                       padding: "15px 0",
@@ -60,7 +67,7 @@ export default function Table({ columns, data, showHeader }) {
                         padding: "15px 0",
                         minWidth: cell.column.minWidth,
                         textAlign: cell.column.textAlign ? cell.column.textAlign : "left",
-                        maxWidth: cell.column.width,
+                        maxWidth: cell.column.maxWidth,
                         width: cell.column.width,
                       },
                     })}
@@ -73,7 +80,7 @@ export default function Table({ columns, data, showHeader }) {
           })}
         </tbody>
       </table>
-      <TableFooter table={tableInstance} />
+      {showFooter && <TableFooter table={tableInstance} />}
     </>
   );
 }
@@ -82,8 +89,10 @@ Table.propTypes = {
   columns: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
   showHeader: PropTypes.bool,
+  showFooter: PropTypes.bool,
 };
 
 Table.defaultProps = {
   showHeader: true,
+  showFooter: true,
 };

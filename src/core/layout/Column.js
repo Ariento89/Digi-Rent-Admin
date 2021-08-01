@@ -5,7 +5,12 @@ export default function Column({ size, children }) {
   return (
     <div
       className="core-column"
-      style={{ display: "flex", flexDirection: "column", marginLeft: "24px", width: `calc((100% / 12) * ${size})` }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        marginLeft: "24px",
+        width: `calc((100% / 12) * ${size})`,
+      }}
     >
       {children}
     </div>

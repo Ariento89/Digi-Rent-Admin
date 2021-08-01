@@ -40,7 +40,7 @@ export default function BaseLayout({ children }) {
           },
         ]}
       />
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "calc(100% - 222px)" }}>
         <Header />
         <Content>{children}</Content>
       </div>

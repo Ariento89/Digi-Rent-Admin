@@ -21,7 +21,7 @@ export default function DoughnutChartIndicator({ label, data }) {
                     size: "14px",
                     family: "GothamBook",
                   },
-                  boxWidth: 10,
+                  boxWidth: 14,
                 },
               },
               tooltip: {

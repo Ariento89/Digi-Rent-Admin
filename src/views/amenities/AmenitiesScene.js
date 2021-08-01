@@ -5,7 +5,6 @@ import Card from "../../core/layout/Card";
 import Table from "../../core/layout/Table";
 import Button from "../../core/form/Button";
 import { BLUE_1, GREY_6, RED_1 } from "../../consts/colors";
-import Badge from "../../core/layout/Badge";
 
 export default function AmenitiesScene() {
   return (

@@ -5,7 +5,7 @@ import Table from "../../layout/Table";
 export default function TableIndicator({ label, columns, data }) {
   return (
     <Card title={label}>
-      <Table showHeader={false} columns={columns} data={data} />
+      <Table showHeader={false} showFooter={false} columns={columns} data={data} />
     </Card>
   );
 }

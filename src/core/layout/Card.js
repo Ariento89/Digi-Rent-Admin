@@ -10,6 +10,7 @@ export default function Card({ title, children }) {
         width: "100%",
         padding: "25px",
         borderRadius: "4px",
+        overflow: "hidden",
       }}
     >
       {title && (
