@@ -9,11 +9,16 @@ export default function BlogDetailsTableIndicator() {
       columns={[
         {
           accessor: "postNumber",
+          width: 50,
           Cell: (props) => <b style={{ fontSize: "16px", color: "#000", fontFamily: "GothamMedium" }}>{props.value}</b>,
         },
-        { accessor: "postTitle" },
+        {
+          width: "100%",
+          accessor: "postTitle",
+        },
         {
           accessor: "actions",
+          width: 200,
           Cell: (props) => (
             <div style={{ display: "flex", alignItems: "center" }}>
               <Button icon="remove" fontColor={RED_1} iconSize="md" isIconButton={true} />
@@ -23,6 +28,7 @@ export default function BlogDetailsTableIndicator() {
           ),
         },
         {
+          width: 100,
           accessor: "favorites",
           Cell: (props) => (
             <div style={{ display: "flex", alignItems: "center" }}>

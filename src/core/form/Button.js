@@ -11,6 +11,7 @@ export default function Button({
   icon,
   iconSize,
   fontColor,
+  iconColor,
 }) {
   return (
     <button
@@ -23,7 +24,7 @@ export default function Button({
         justifyContent: "center",
         minWidth: isIconButton ? "auto" : "120px",
         width: isIconButton ? "32px" : "auto",
-        height: isIconButton ? "32px" : "40px",
+        height: isIconButton ? "32px" : "38px",
         outline: 0,
         padding: isIconButton ? "auto" : "0 20px",
         border: `1px solid ${backgroundColor}`,
@@ -32,14 +33,14 @@ export default function Button({
         ...style,
       }}
     >
-      {icon && <Icon name={icon} size={iconSize} color={fontColor} />}
+      {icon && <Icon name={icon} size={iconSize} color={iconColor ? iconColor : fontColor} />}
       {label && (
         <span
           style={{
             color: fontColor,
             fontSize: "14px",
             lineHeight: "20px",
-            marginLeft: icon && !isIconButton ? "12px" : "auto",
+            marginLeft: icon && !isIconButton ? "8px" : "0",
           }}
         >
           {label}
@@ -54,6 +55,7 @@ Button.propTypes = {
   icon: PropTypes.string,
   htmlType: PropTypes.oneOf(["button", "submit"]),
   onClick: PropTypes.func,
+  iconColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   fontColor: PropTypes.string,
   style: PropTypes.object,

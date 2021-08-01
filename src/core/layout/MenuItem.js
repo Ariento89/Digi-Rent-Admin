@@ -22,7 +22,7 @@ export default function MenuItem({ label, url, icon, children, isActive, onClick
       >
         <div style={{ display: "flex" }}>
           <Icon name={icon} color={isActive ? "#fff" : GREY_3} />
-          <span style={{ marginLeft: "15px", color: isActive ? "#fff" : GREY_3 }}>{label}</span>
+          <span style={{ marginLeft: "15px", lineHeight: "22px", color: isActive ? "#fff" : GREY_3 }}>{label}</span>
         </div>
         {children.length > 0 && (
           <div
