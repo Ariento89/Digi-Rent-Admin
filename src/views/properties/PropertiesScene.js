@@ -73,83 +73,87 @@ export default function PropertiesScene() {
             ]}
             data={[
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "1 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "2 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "3 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "4 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "5 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "6 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "7 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "8 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "9 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "10 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "11 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "12 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "13 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "14 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "15 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "16 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "17 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "18 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "19 villa raharja pertama utama",
                 status: "active",
               },
               {
-                propertyName: "villa raharja pertama utama",
+                propertyName: "20 villa raharja pertama utama",
+                status: "active",
+              },
+              {
+                propertyName: "21 villa raharja pertama utama",
                 status: "active",
               },
             ]}

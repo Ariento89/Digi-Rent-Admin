@@ -9,6 +9,7 @@ export default function PropertiesFilter() {
     <Row alignItems="center" justifyContent="space-between">
       <Select
         width="140px"
+        placeholder="Filter..."
         options={[
           { value: "filter-1", label: "Filter 1" },
           { value: "filter-2", label: "Filter 2" },

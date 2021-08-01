@@ -11,14 +11,20 @@ export default function Button({
   icon,
   iconSize,
   fontColor,
+  fontSize,
+  fontFamily,
   iconColor,
+  rounded,
+  isDisabled,
 }) {
   return (
     <button
       type={htmlType}
       onClick={onClick}
+      disabled={isDisabled}
       style={{
         backgroundColor: backgroundColor,
+        opacity: isDisabled ? 0.5 : 1,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -28,7 +34,7 @@ export default function Button({
         outline: 0,
         padding: isIconButton ? "auto" : "0 20px",
         border: `1px solid ${backgroundColor}`,
-        borderRadius: "7px",
+        borderRadius: rounded ? "50px" : "7px",
         cursor: "pointer",
         ...style,
       }}
@@ -38,7 +44,8 @@ export default function Button({
         <span
           style={{
             color: fontColor,
-            fontSize: "14px",
+            fontSize: fontSize,
+            fontFamily: fontFamily,
             lineHeight: "20px",
             marginLeft: icon && !isIconButton ? "8px" : "0",
           }}
@@ -59,16 +66,24 @@ Button.propTypes = {
   backgroundColor: PropTypes.string,
   fontColor: PropTypes.string,
   style: PropTypes.object,
+  fontSize: PropTypes.string,
+  isDisabled: PropTypes.bool,
+  fontFamily: PropTypes.string,
   iconSize: PropTypes.string,
+  rounded: PropTypes.bool,
 };
 
 Button.defaultProps = {
   label: null,
   icon: null,
   isIconButton: false,
+  isDisabled: false,
   htmlType: "button",
   onClick: () => {},
   style: {},
+  fontSize: "14px",
+  fontFamily: "GothamBook",
+  rounded: false,
   fontColor: "#fff",
   backgroundColor: "transparent",
 };
