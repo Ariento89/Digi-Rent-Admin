@@ -23,8 +23,8 @@ export default function BaseLayout({ children }) {
                 url: "/landlords",
               },
               {
-                label: "Tentants",
-                url: "/tentants",
+                label: "Tenants",
+                url: "/tenants",
               },
             ],
           },

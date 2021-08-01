@@ -5,7 +5,7 @@ import AbsoluteValueIndicatorIcon from "./AbsoluteValueIndicatorIcon";
 
 export default function AbsoluteValueIndicator({ icon, label, value, size, primaryColor, secondaryColor }) {
   const valueFontSize = { sm: "24px", md: "36px", lg: "36px" }[size];
-  const height = { sm: "47px", md: "103px", lg: "143px" }[size];
+  const height = { sm: "47px", md: "103px", lg: "158px" }[size];
   const marginLeft = { sm: "15px", md: "24px", lg: 0 }[size];
   return (
     <Card>

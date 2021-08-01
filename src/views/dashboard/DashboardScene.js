@@ -36,10 +36,10 @@ export default function DashboardScene() {
       </Row>
       <Row>
         <Column size={5}>
-          <LandlordsGenderChartIndicator />
+          <LandlordsGenderChartIndicator size="md" />
         </Column>
         <Column size={4}>
-          <LandlordsAgeChartIndicator />
+          <LandlordsAgeChartIndicator size="md" />
         </Column>
         <Column size={3}>
           <Row>

@@ -1,9 +1,11 @@
 import AbsoluteValueIndicator from "./commons/AbsoluteValueIndicator";
+import PropTypes from "prop-types";
 
-export default function TenantsActiveAbsoluteValueIndicator() {
+export default function TenantsActiveAbsoluteValueIndicator({ size }) {
   return (
     <AbsoluteValueIndicator
       label="Tenants Active"
+      size={size}
       value="7260"
       icon="radar"
       primaryColor="#00bfb1"
@@ -11,3 +13,7 @@ export default function TenantsActiveAbsoluteValueIndicator() {
     />
   );
 }
+
+TenantsActiveAbsoluteValueIndicator.propTypes = {
+  size: PropTypes.string.isRequired,
+};

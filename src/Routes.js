@@ -5,6 +5,7 @@ import NotFoundScene from "./views/not-found/NotFoundScene";
 import PropertiesScene from "./views/properties/PropertiesScene";
 import AmenitiesScene from "./views/amenities/AmenitiesScene";
 import LandlordsScene from "./views/landlords/LandlordsScene";
+import TenantsScene from "./views/tenants/TenantsScene";
 
 export default function Routes() {
   return (
@@ -14,6 +15,7 @@ export default function Routes() {
         <Route exact key="properties" path="/properties" component={PropertiesScene} />
         <Route exact key="amenities" path="/amenities" component={AmenitiesScene} />
         <Route exact key="users_landlords" path="/users/landlords" component={LandlordsScene} />
+        <Route exact key="users_tenants" path="/users/tenants" component={TenantsScene} />
         <Route path="*" component={NotFoundScene} />
       </Switch>
     </Router>

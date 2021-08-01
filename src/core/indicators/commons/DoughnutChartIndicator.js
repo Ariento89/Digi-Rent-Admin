@@ -3,7 +3,7 @@ import DoughnutChart from "../../charts/DoughnutChart";
 import Card from "../../layout/Card";
 
 export default function DoughnutChartIndicator({ label, data, size }) {
-  const height = { md: "226px", sm: "100px" }[size];
+  const height = { md: "226px", sm: "116px" }[size];
 
   return (
     <Card title={label}>

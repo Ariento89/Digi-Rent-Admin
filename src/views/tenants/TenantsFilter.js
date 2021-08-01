@@ -4,7 +4,7 @@ import Select from "../../core/form/Select";
 import Row from "../../core/layout/Row";
 import Separator from "../../core/layout/Separator";
 
-export default function LandlordsFilter() {
+export default function TenantsFilter() {
   return (
     <Row alignItems="center" justifyContent="space-between">
       <Select

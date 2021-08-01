@@ -1,11 +1,13 @@
 import DoughnutChartIndicator from "./commons/DoughnutChartIndicator";
+import PropTypes from "prop-types";
 
-export default function TenantsGenderChartIndicator() {
+export default function TenantsGenderChartIndicator({ size }) {
   return (
     <DoughnutChartIndicator
       label="Tenant gender"
+      size={size}
       data={{
-        labels: ["Female Tentant", "Male Tenant"],
+        labels: ["Female Tenant", "Male Tenant"],
         datasets: [
           {
             label: "# of Votes",
@@ -16,3 +18,7 @@ export default function TenantsGenderChartIndicator() {
     />
   );
 }
+
+TenantsGenderChartIndicator.propTypes = {
+  size: PropTypes.string.isRequired,
+};
