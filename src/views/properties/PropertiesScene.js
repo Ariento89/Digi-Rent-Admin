@@ -27,7 +27,7 @@ export default function PropertiesScene() {
           <PropertiesDisplayedAbsoluteValueIndicator />
         </Column>
         <Column size={3}>
-          <TotalApplicationsAbsoluteValueIndicator />{" "}
+          <TotalApplicationsAbsoluteValueIndicator />
         </Column>
       </Row>
       <Separator size="md" />

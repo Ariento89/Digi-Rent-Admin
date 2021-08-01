@@ -1,6 +1,7 @@
 import AbsoluteValueIndicator from "./commons/AbsoluteValueIndicator";
+import PropTypes from "prop-types";
 
-export default function LandlordsRegisteredAbsoluteValueIndicator() {
+export default function LandlordsRegisteredAbsoluteValueIndicator({ size }) {
   return (
     <AbsoluteValueIndicator
       label="Landlords Registered"
@@ -8,7 +9,11 @@ export default function LandlordsRegisteredAbsoluteValueIndicator() {
       icon="tick-square"
       primaryColor="#41a2f9"
       secondaryColor="#ebf5ff"
-      size="md"
+      size={size}
     />
   );
 }
+
+LandlordsRegisteredAbsoluteValueIndicator.propTypes = {
+  size: PropTypes.string.isRequired,
+};

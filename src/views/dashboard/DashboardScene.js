@@ -18,20 +18,20 @@ export default function DashboardScene() {
       <Row>
         <Column size={3}>
           <Row>
-            <TenantsRegisteredAbsoluteValueIndicator />
+            <TenantsRegisteredAbsoluteValueIndicator size="sm" />
           </Row>
           <Row>
-            <TenantsActiveAbsoluteValueIndicator />
+            <TenantsActiveAbsoluteValueIndicator size="sm" />
           </Row>
           <Row>
             <TenantsApplicationsAbsoluteValueIndicator />
           </Row>
         </Column>
         <Column size={4}>
-          <TenantsAgeChartIndicator />
+          <TenantsAgeChartIndicator size="md" />
         </Column>
         <Column size={5}>
-          <TenantsGenderChartIndicator />
+          <TenantsGenderChartIndicator size="md" />
         </Column>
       </Row>
       <Row>
@@ -43,10 +43,10 @@ export default function DashboardScene() {
         </Column>
         <Column size={3}>
           <Row>
-            <LandlordsRegisteredAbsoluteValueIndicator />
+            <LandlordsRegisteredAbsoluteValueIndicator size="md" />
           </Row>
           <Row>
-            <LandlordsActiveAbsoluteValueIndicator />
+            <LandlordsActiveAbsoluteValueIndicator size="md" />
           </Row>
         </Column>
       </Row>

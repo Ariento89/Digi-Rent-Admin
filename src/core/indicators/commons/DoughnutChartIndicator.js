@@ -2,10 +2,12 @@ import PropTypes from "prop-types";
 import DoughnutChart from "../../charts/DoughnutChart";
 import Card from "../../layout/Card";
 
-export default function DoughnutChartIndicator({ label, data }) {
+export default function DoughnutChartIndicator({ label, data, size }) {
+  const height = { md: "226px", sm: "100px" }[size];
+
   return (
     <Card title={label}>
-      <div style={{ height: "226px" }}>
+      <div style={{ height: height }}>
         <DoughnutChart
           data={{ ...data }}
           options={{
@@ -18,7 +20,7 @@ export default function DoughnutChartIndicator({ label, data }) {
                   usePointStyle: true,
                   font: {
                     color: "#a5a9ad",
-                    size: "14px",
+                    size: "11px",
                     family: "GothamBook",
                   },
                   boxWidth: 14,
@@ -38,4 +40,10 @@ export default function DoughnutChartIndicator({ label, data }) {
 
 DoughnutChartIndicator.propTypes = {
   label: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  size: PropTypes.oneOf(["md", "sm"]),
+};
+
+DoughnutChartIndicator.defaultProps = {
+  size: "md",
 };
