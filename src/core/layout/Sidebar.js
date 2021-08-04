@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import DigiRentLogo from "../../assets/images/logo.png";
-import browserHistory from "../../browserHistory";
 import { GREY_2 } from "../../consts/colors";
 import MenuItem from "../layout/MenuItem";
 
 export default function Sidebar({ menuItems }) {
+  const history = useHistory();
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
   useState(() => {
-    setActiveMenuItem(browserHistory.location.pathname);
+    setActiveMenuItem(history.location.pathname);
   }, []);
 
   const handleLogout = () => {};
@@ -17,7 +18,7 @@ export default function Sidebar({ menuItems }) {
   const handleClick = (url) => {
     const menuItem = menuItems.find((item) => item.url === url);
     if (!menuItem?.children) {
-      browserHistory.push(url);
+      history.push(url);
     }
     // the url.split() here is  to keep submenus open when clicked,
     // e.g.: in /users/tentants we get only the "/users" part of the url
@@ -42,7 +43,7 @@ export default function Sidebar({ menuItems }) {
       }}
     >
       <div>
-        <div style={{ cursor: "pointer" }} onClick={() => browserHistory.push("/")}>
+        <div style={{ cursor: "pointer" }} onClick={() => history.push("/")}>
           <img src={DigiRentLogo} alt="Digi Rent Logo" width="100%" />
         </div>
         <div style={{ width: "100%", marginTop: "20px" }}>

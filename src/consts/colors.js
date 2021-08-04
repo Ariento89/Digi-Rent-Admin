@@ -13,3 +13,5 @@ export const BLUE_1 = "#41a2f9";
 export const RED_1 = "#FF4B77";
 
 export const PRIMARY = "radial-gradient(112.5% 750.59% at 7.67% 15.62%, #6BB9FF 0%, #0D96EF 100%)";
+
+export const DANGER = "#c92828";

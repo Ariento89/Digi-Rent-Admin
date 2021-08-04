@@ -29,7 +29,7 @@ export default function Button({
         alignItems: "center",
         justifyContent: "center",
         minWidth: isIconButton ? "auto" : "120px",
-        width: isIconButton ? "32px" : "auto",
+        width: isIconButton ? "32px" : "100%",
         height: isIconButton ? "32px" : "38px",
         outline: 0,
         padding: isIconButton ? "auto" : "0 20px",

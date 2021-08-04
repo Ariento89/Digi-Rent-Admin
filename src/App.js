@@ -1,11 +1,12 @@
+import { Router } from "react-router-dom";
 import Routes from "./Routes";
-import BaseLayout from "./core/layout/BaseLayout";
+import browserHistory from "./browserHistory";
 import "./App.css";
 
 export default function App() {
   return (
-    <BaseLayout>
+    <Router history={browserHistory}>
       <Routes />
-    </BaseLayout>
+    </Router>
   );
 }
