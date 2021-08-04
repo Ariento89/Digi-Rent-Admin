@@ -11,6 +11,7 @@ export default function TableFooter({ table }) {
     nextPage,
     previousPage,
     setPageSize,
+    gotoPage,
     rows,
     page,
     state: { pageIndex, pageSize },
@@ -24,9 +25,10 @@ export default function TableFooter({ table }) {
         </span>
         <Select
           width="70px"
+          menuPlacement="top"
           value={{ value: pageSize, label: pageSize }}
           onChange={(option) => {
-            setPageSize(option.value.toString);
+            setPageSize(option.value);
           }}
           options={range(10, 50, 10).map((pageSize) => ({
             label: pageSize,
@@ -59,6 +61,7 @@ export default function TableFooter({ table }) {
           {range(max([pageIndex - 1, 0]), min([pageIndex + 3, pageCount]), 1).map((page) => (
             <Button
               key={`table-footer-page-${page}`}
+              onClick={() => gotoPage(page)}
               isIconButton={true}
               label={page + 1}
               fontColor={pageIndex === page ? "#fff" : GREY_9}
