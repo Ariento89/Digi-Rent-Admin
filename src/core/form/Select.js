@@ -16,14 +16,14 @@ export default function Select({ options, width, placeholder, value, onChange })
 }
 
 Select.propTypes = {
-  options: PropTypes.arrayOf([
-    {
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    },
-  ]).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    })
+  ).isRequired,
   width: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.object,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
 };

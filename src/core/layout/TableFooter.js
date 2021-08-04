@@ -26,7 +26,7 @@ export default function TableFooter({ table }) {
           width="70px"
           value={{ value: pageSize, label: pageSize }}
           onChange={(option) => {
-            setPageSize(option.value);
+            setPageSize(option.value.toString);
           }}
           options={range(10, 50, 10).map((pageSize) => ({
             label: pageSize,
@@ -58,6 +58,7 @@ export default function TableFooter({ table }) {
         <div style={{ display: "flex", justifyContent: "center" }}>
           {range(max([pageIndex - 1, 0]), min([pageIndex + 3, pageCount]), 1).map((page) => (
             <Button
+              key={`table-footer-page-${page}`}
               isIconButton={true}
               label={page + 1}
               fontColor={pageIndex === page ? "#fff" : GREY_9}

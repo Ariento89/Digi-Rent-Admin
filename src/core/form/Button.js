@@ -58,7 +58,7 @@ export default function Button({
 }
 
 Button.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   icon: PropTypes.string,
   htmlType: PropTypes.oneOf(["button", "submit"]),
   onClick: PropTypes.func,
