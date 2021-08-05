@@ -1,7 +1,17 @@
 import PropTypes from "prop-types";
 import { DANGER, GREY_2, GREY_9 } from "../../consts/colors";
 
-export default function TextInput({ label, fieldType, type, placeholder, value, required, onChange, errorText }) {
+export default function TextInput({
+  label,
+  fieldType,
+  type,
+  isDisabled,
+  placeholder,
+  value,
+  required,
+  onChange,
+  errorText,
+}) {
   return fieldType === "input" ? (
     <label style={{ marginBottom: "8px", display: "block" }}>
       <span style={{ marginBottom: "8px", marginLeft: "3px", display: "block", fontSize: "13px" }}>
@@ -13,6 +23,7 @@ export default function TextInput({ label, fieldType, type, placeholder, value, 
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        disabled={isDisabled}
         style={{
           width: "100%",
           backgroundColor: "#fff",
@@ -23,6 +34,8 @@ export default function TextInput({ label, fieldType, type, placeholder, value, 
           outline: "none",
           border: `1px solid ${GREY_2}`,
           borderRadius: "4px",
+          opacity: isDisabled ? 0.6 : 1,
+          cursor: isDisabled ? "not-allowed" : "auto",
         }}
       />
       <span
@@ -51,6 +64,7 @@ TextInput.propTypes = {
   required: PropTypes.bool,
   onChange: PropTypes.func,
   errorText: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -59,6 +73,7 @@ TextInput.defaultProps = {
   placeholder: null,
   value: null,
   required: false,
+  isDisabled: false,
   errorText: null,
   onChange: () => false,
 };

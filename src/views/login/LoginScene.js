@@ -3,8 +3,17 @@ import Card from "../../core/layout/Card";
 import DigiRentLogo from "../../assets/images/logo.png";
 import LoginForm from "./LoginForm";
 import Separator from "../../core/layout/Separator";
+import { ACCESS_TOKEN_STORAGE_KEY } from "../../consts";
+import { useHistory } from "react-router-dom";
 
 export default function LoginScene() {
+  const isAuthenticated = !!localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+  const history = useHistory();
+
+  if (isAuthenticated) {
+    history.push("/");
+  }
+
   return (
     <div
       style={{

@@ -20,7 +20,10 @@
   box-sizing: border-box;
   font-family: "GothamBook";
   font-size: 14px;
-  color: #73797f;
+}
+
+.Toastify {
+  color: inherit;
 }
 
 .core-column:first-of-type {

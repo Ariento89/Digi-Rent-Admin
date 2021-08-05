@@ -3,17 +3,26 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import DigiRentLogo from "../../assets/images/logo.png";
 import { GREY_2 } from "../../consts/colors";
+import useService from "../../hooks/useService";
 import MenuItem from "../layout/MenuItem";
+import { logout } from "../../services/authService";
+import useNotification from "../../hooks/useNotification";
 
 export default function Sidebar({ menuItems }) {
   const history = useHistory();
+  const notify = useNotification();
   const [activeMenuItem, setActiveMenuItem] = useState(null);
+  const [, startLogout] = useService(logout, {
+    onData: () => {
+      notify("Logged out!");
+      history.push("/login");
+    },
+    onError: () => {},
+  });
 
   useState(() => {
     setActiveMenuItem(history.location.pathname);
   }, []);
-
-  const handleLogout = () => {};
 
   const handleClick = (url) => {
     const menuItem = menuItems.find((item) => item.url === url);
@@ -65,7 +74,7 @@ export default function Sidebar({ menuItems }) {
         url="/login"
         icon="login"
         label="Log Out"
-        onClick={handleLogout}
+        onClick={startLogout}
         isActive={false}
       />
     </div>

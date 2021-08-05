@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Icon from "../layout/Icon";
+import Spinner from "../layout/Spinner";
 
 export default function Button({
   htmlType,
@@ -16,6 +17,7 @@ export default function Button({
   iconColor,
   rounded,
   isDisabled,
+  isLoading,
 }) {
   return (
     <button
@@ -35,23 +37,29 @@ export default function Button({
         padding: isIconButton ? "auto" : "0 20px",
         border: `1px solid ${backgroundColor}`,
         borderRadius: rounded ? "50px" : "7px",
-        cursor: "pointer",
+        cursor: isDisabled ? "not-allowed" : "pointer",
         ...style,
       }}
     >
-      {icon && <Icon name={icon} size={iconSize} color={iconColor ? iconColor : fontColor} />}
-      {label && (
-        <span
-          style={{
-            color: fontColor,
-            fontSize: fontSize,
-            fontFamily: fontFamily,
-            lineHeight: "20px",
-            marginLeft: icon && !isIconButton ? "8px" : "0",
-          }}
-        >
-          {label}
-        </span>
+      {isLoading ? (
+        <Spinner size="xs" />
+      ) : (
+        <>
+          {icon && <Icon name={icon} size={iconSize} color={iconColor ? iconColor : fontColor} />}
+          {label && (
+            <span
+              style={{
+                color: fontColor,
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                lineHeight: "20px",
+                marginLeft: icon && !isIconButton ? "8px" : "0",
+              }}
+            >
+              {label}
+            </span>
+          )}
+        </>
       )}
     </button>
   );
@@ -68,6 +76,7 @@ Button.propTypes = {
   style: PropTypes.object,
   fontSize: PropTypes.string,
   isDisabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
   fontFamily: PropTypes.string,
   iconSize: PropTypes.string,
   rounded: PropTypes.bool,
@@ -78,6 +87,7 @@ Button.defaultProps = {
   icon: null,
   isIconButton: false,
   isDisabled: false,
+  isLoading: false,
   htmlType: "button",
   onClick: () => {},
   style: {},
