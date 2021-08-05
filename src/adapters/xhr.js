@@ -20,14 +20,15 @@ function axiosInstance() {
       }
     }
   );
+  return instance;
 }
 
 export async function get(url) {
   const api = axiosInstance();
-  return await api.get(url);
+  return await api.get(`${url}/`);
 }
 
 export async function post(url, body) {
   const api = axiosInstance();
-  return await api.post(url, body);
+  return await api.post(`${url}/`, body);
 }

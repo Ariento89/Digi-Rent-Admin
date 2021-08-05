@@ -7,6 +7,8 @@ export default function useNotification() {
         return toast.error(text, { ...settings });
       case "info":
         return toast.info(text, { ...settings });
+      case "warning":
+        return toast.warning(text, { ...settings });
       default:
         return toast.info(text, { ...settings });
     }

@@ -18,6 +18,7 @@ export default function Button({
   rounded,
   isDisabled,
   isLoading,
+  isFullWidth,
 }) {
   return (
     <button
@@ -32,9 +33,10 @@ export default function Button({
         justifyContent: "center",
         minWidth: isIconButton ? "auto" : "120px",
         width: isIconButton ? "32px" : "100%",
+        maxWidth: isFullWidth ? "100%" : "200px",
         height: isIconButton ? "32px" : "38px",
         outline: 0,
-        padding: isIconButton ? "auto" : "0 20px",
+        padding: isIconButton ? "auto" : "0",
         border: `1px solid ${backgroundColor}`,
         borderRadius: rounded ? "50px" : "7px",
         cursor: isDisabled ? "not-allowed" : "pointer",
@@ -77,6 +79,7 @@ Button.propTypes = {
   fontSize: PropTypes.string,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
+  isFullWidth: PropTypes.bool,
   fontFamily: PropTypes.string,
   iconSize: PropTypes.string,
   rounded: PropTypes.bool,
@@ -87,6 +90,7 @@ Button.defaultProps = {
   icon: null,
   isIconButton: false,
   isDisabled: false,
+  isFullWidth: false,
   isLoading: false,
   htmlType: "button",
   onClick: () => {},

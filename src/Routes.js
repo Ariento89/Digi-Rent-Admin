@@ -18,7 +18,6 @@ export default function Routes() {
         <Route exact key="amenities" path="/amenities" component={AmenitiesScene} />
         <Route exact key="users_landlords" path="/users/landlords" component={LandlordsScene} />
         <Route exact key="users_tenants" path="/users/tenants" component={TenantsScene} />
-        <Route path="*" component={NotFoundScene} />
       </ProtectedRoutes>
       <Route path="*" component={NotFoundScene} />
     </Switch>

@@ -73,6 +73,7 @@ export default function LoginForm() {
         htmlType="submit"
         isDisabled={isSubmitting}
         isLoading={isSubmitting}
+        isFullWidth={true}
       />
     </form>
   );
