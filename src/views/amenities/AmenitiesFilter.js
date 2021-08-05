@@ -8,7 +8,7 @@ export default function AmenitiesFilter() {
   return (
     <Row alignItems="center" justifyContent="space-between">
       <Select
-        width="140px"
+        width="300px"
         placeholder="Filter..."
         options={[
           { value: "filter-1", label: "Filter 1" },
