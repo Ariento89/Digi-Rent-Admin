@@ -16,6 +16,7 @@ import useService from "../../hooks/useService";
 import { useEffect, useState } from "react";
 import useNotification from "../../hooks/useNotification";
 import { getLandlords } from "../../services/landlordsService";
+import AsyncScreen from "../../core/layout/AsyncScreen";
 
 export default function LandlordsScene() {
   const notify = useNotification();
@@ -52,57 +53,59 @@ export default function LandlordsScene() {
       </Row>
       <Row>
         <Card>
-          <Table
-            columns={[
-              {
-                accessor: "checkbox",
-                width: "5%",
-                textAlign: "center",
-                Header: (props) => <input type="checkbox" />,
-                Cell: (props) => <input type="checkbox" />,
-              },
-              {
-                accessor: "id",
-                Header: "ID",
-                width: "5%",
-                Cell: (props) => <b style={{ fontFamily: "GothamBold", color: "#000" }}>{props.value}</b>,
-              },
-              {
-                accessor: "firstName",
-                Header: "First Name",
-                width: "20%",
-              },
-              {
-                accessor: "lastName",
-                Header: "Last Name",
-                width: "20%",
-              },
-              {
-                accessor: "location",
-                Header: "Location",
-                width: "15%",
-              },
-              {
-                accessor: "status",
-                Header: "Status",
-                width: "10%",
-                Cell: (props) => <Badge label="Active" status="success" />,
-              },
-              {
-                accessor: "action",
-                Header: "Action",
-                width: "15%",
-                Cell: (props) => (
-                  <div style={{ display: "flex" }}>
-                    <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
-                    <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
-                    <Button fontColor={BLUE_1} iconSize="md" label="Details" />
-                  </div>
-                ),
-              },
-            ]}
-            data={landlords}
-          />
+          <AsyncScreen isLoading={isFetchingTable}>
+            <Table
+              columns={[
+                {
+                  accessor: "checkbox",
+                  width: "5%",
+                  textAlign: "center",
+                  Header: (props) => <input type="checkbox" />,
+                  Cell: (props) => <input type="checkbox" />,
+                },
+                {
+                  accessor: "id",
+                  Header: "ID",
+                  width: "5%",
+                  Cell: (props) => <b style={{ fontFamily: "GothamBold", color: "#000" }}>{props.value}</b>,
+                },
+                {
+                  accessor: "firstName",
+                  Header: "First Name",
+                  width: "20%",
+                },
+                {
+                  accessor: "lastName",
+                  Header: "Last Name",
+                  width: "20%",
+                },
+                {
+                  accessor: "location",
+                  Header: "Location",
+                  width: "15%",
+                },
+                {
+                  accessor: "status",
+                  Header: "Status",
+                  width: "10%",
+                  Cell: (props) => <Badge label="Active" status="success" />,
+                },
+                {
+                  accessor: "action",
+                  Header: "Action",
+                  width: "15%",
+                  Cell: (props) => (
+                    <div style={{ display: "flex" }}>
+                      <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
+                      <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
+                      <Button fontColor={BLUE_1} iconSize="md" label="Details" />
+                    </div>
+                  ),
+                },
+              ]}
+              data={landlords}
+            />
+          </AsyncScreen>
         </Card>
       </Row>
     </div>
