@@ -1,13 +1,16 @@
 import axios from "axios";
 import { keys } from "lodash";
 import browserHistory from "../browserHistory";
+import { ACCESS_TOKEN_STORAGE_KEY } from "../consts";
 
 function axiosInstance() {
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     responseType: "application/json",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
   });
   instance.interceptors.response.use(

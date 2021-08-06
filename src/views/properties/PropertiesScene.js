@@ -23,12 +23,8 @@ export default function PropertiesScene() {
   const notify = useNotification();
   const [apartments, setApartments] = useState([]);
   const [isFetchingTable, loadApartments] = useService(getApartments, {
-    onData: ({ data }) => {
-      setApartments(data);
-    },
-    onError: (error) => {
-      notify(error.text, "warning");
-    },
+    onData: ({ data }) => setApartments(data),
+    onError: (error) => notify(error.text, "warning"),
   });
 
   useEffect(() => {

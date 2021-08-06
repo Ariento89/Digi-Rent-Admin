@@ -16,12 +16,8 @@ export default function AmenitiesScene() {
   const notify = useNotification();
   const [amenities, setAmenities] = useState([]);
   const [isFetchingTable, loadAmenities] = useService(getAmenities, {
-    onData: ({ data }) => {
-      setAmenities(data);
-    },
-    onError: (error) => {
-      notify(error.text, "warning");
-    },
+    onData: ({ data }) => setAmenities(data),
+    onError: (error) => notify(error.text, "warning"),
   });
 
   useEffect(() => {

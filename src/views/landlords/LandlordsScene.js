@@ -12,8 +12,23 @@ import Table from "../../core/layout/Table";
 import Button from "../../core/form/Button";
 import { BLUE_1, GREY_6, RED_1 } from "../../consts/colors";
 import Badge from "../../core/layout/Badge";
+import useService from "../../hooks/useService";
+import { useEffect, useState } from "react";
+import useNotification from "../../hooks/useNotification";
+import { getLandlords } from "../../services/landlordsService";
 
 export default function LandlordsScene() {
+  const notify = useNotification();
+  const [landlords, setLandlords] = useState([]);
+  const [isFetchingTable, loadLandlords] = useService(getLandlords, {
+    onData: ({ data }) => setLandlords(data),
+    onError: (error) => notify(error.text, "warning"),
+  });
+
+  useEffect(() => {
+    loadLandlords();
+  }, []);
+
   return (
     <div>
       <Row>
@@ -86,78 +101,7 @@ export default function LandlordsScene() {
                 ),
               },
             ]}
-            data={[
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-              {
-                id: "1241",
-                firstName: "Hanna",
-                lastName: "Septimus",
-                location: "The Gauge",
-                status: "active",
-              },
-            ]}
+            data={landlords}
           />
         </Card>
       </Row>
