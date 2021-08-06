@@ -74,10 +74,12 @@ export default function PropertiesScene() {
                   width: "50%",
                 },
                 {
-                  accessor: "status",
+                  accessor: "apartment",
                   Header: "Status",
                   width: "10%",
-                  Cell: (props) => <Badge label="Active" status="success" />,
+                  Cell: (props) => {
+                    return <Badge label="Active" status="success" />;
+                  },
                 },
                 {
                   accessor: "action",

@@ -19,9 +19,7 @@ export default function LoginForm() {
       history.push("/");
     },
     onError: (error) => {
-      if (error.status === 401) {
-        notify("Wrong credentials. Try again.", "error");
-      }
+      notify("Wrong credentials. Try again.", "error");
     },
   });
 

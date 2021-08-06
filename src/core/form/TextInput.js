@@ -63,7 +63,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   required: PropTypes.bool,
   onChange: PropTypes.func,
-  errorText: PropTypes.string,
+  errorText: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   isDisabled: PropTypes.bool,
 };
 

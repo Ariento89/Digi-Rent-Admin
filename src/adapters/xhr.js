@@ -1,4 +1,5 @@
 import axios from "axios";
+import { keys } from "lodash";
 import browserHistory from "../browserHistory";
 
 function axiosInstance() {
@@ -6,18 +7,20 @@ function axiosInstance() {
     baseURL: process.env.REACT_APP_API_URL,
     responseType: "application/json",
     headers: {
-      "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
     },
   });
   instance.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (error.response.statusCode === 401) {
+      if (error.response.status === 422) {
         localStorage.clear();
         axios.defaults.headers.common["Authorization"] = null;
-        browserHistory.push("/login");
+        if (error.config.url !== "auht/") {
+          browserHistory.push("/login");
+        }
       }
+      return Promise.reject(error);
     }
   );
   return instance;
@@ -30,5 +33,8 @@ export async function get(url) {
 
 export async function post(url, body) {
   const api = axiosInstance();
-  return await api.post(`${url}/`, body);
+  const formData = new FormData();
+  keys(body).reduce((_, key) => formData.append(key, body[key]), []);
+
+  return await api.post(`${url}/`, formData);
 }
