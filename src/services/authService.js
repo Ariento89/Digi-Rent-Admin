@@ -6,7 +6,7 @@ import safeCall from "./safeCall";
 export const login = async (payload) => {
   const { data } = await safeCall(
     async () =>
-      await post("auth", {
+      await post("admin/auth", {
         username: payload.email,
         password: payload.password,
         grant_type: "password",

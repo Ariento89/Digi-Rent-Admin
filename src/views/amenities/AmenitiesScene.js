@@ -32,7 +32,7 @@ export default function AmenitiesScene() {
       </Row>
       <Row>
         <Card>
-          <AsyncScreen isLoading={isFetchingTable} style={{ minHeight: "300px" }}>
+          <AsyncScreen isLoading={isFetchingTable}>
             <Table
               columns={[
                 {

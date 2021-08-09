@@ -15,7 +15,7 @@ import Badge from "../../core/layout/Badge";
 import useService from "../../hooks/useService";
 import { useEffect, useState } from "react";
 import useNotification from "../../hooks/useNotification";
-import { getLandlords } from "../../services/landlordsService";
+import { getLandlords } from "../../services/usersService";
 import AsyncScreen from "../../core/layout/AsyncScreen";
 
 export default function LandlordsScene() {
@@ -80,7 +80,7 @@ export default function LandlordsScene() {
                   width: "20%",
                 },
                 {
-                  accessor: "location",
+                  accessor: "city",
                   Header: "Location",
                   width: "15%",
                 },
