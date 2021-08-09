@@ -11,27 +11,62 @@ import LandlordsRegisteredAbsoluteValueIndicator from "../../core/indicators/Lan
 import LandlordsActiveAbsoluteValueIndicator from "../../core/indicators/LandlordsActiveAbsoluteValueIndicator";
 import BlogDetailsTableIndicator from "../../core/indicators/BlogDetailsTableIndicator";
 import UniqueWebsiteVisitorsChartIndicator from "../../core/indicators/UniqueWebsiteVisitorsChartIndicator";
+import useNotification from "../../hooks/useNotification";
+import { useEffect, useState } from "react";
+import useService from "../../hooks/useService";
+import { getTenants } from "../../services/usersService";
+import { getActiveTenants, getRegisteredTenants, getTotalByAge, getTotalByGender } from "../../utils/tenantsIndicators";
+import { getApplications } from "../../services/applicationsService";
+import { getTotalApplications } from "../../utils/applicationsIndicators";
 
 export default function DashboardScene() {
+  const notify = useNotification();
+  const [tenants, setTenants] = useState([]);
+  const [applications, setApplications] = useState([]);
+  const [isFetchingTenants, loadTenants] = useService(getTenants, {
+    onData: ({ data }) => setTenants(data),
+    onError: (error) => notify(error.text, "warning"),
+  });
+  const [isFetchingApplications, loadApplications] = useService(getApplications, {
+    onData: ({ data }) => setApplications(data),
+    onError: (error) => notify(error.text, "warning"),
+  });
+
+  useEffect(() => {
+    loadTenants();
+    loadApplications();
+  }, []);
+
   return (
     <div>
       <Row>
         <Column size={3}>
           <Row>
-            <TenantsRegisteredAbsoluteValueIndicator size="sm" />
+            <TenantsRegisteredAbsoluteValueIndicator
+              value={getRegisteredTenants(tenants)}
+              isLoading={isFetchingTenants}
+              size="sm"
+            />
           </Row>
           <Row>
-            <TenantsActiveAbsoluteValueIndicator size="sm" />
+            <TenantsActiveAbsoluteValueIndicator
+              size="sm"
+              value={getActiveTenants(tenants)}
+              isLoading={isFetchingTenants}
+            />
           </Row>
           <Row>
-            <TenantsApplicationsAbsoluteValueIndicator />
+            <TenantsApplicationsAbsoluteValueIndicator
+              value={getTotalApplications(applications)}
+              isLoading={isFetchingApplications}
+            />
           </Row>
         </Column>
         <Column size={4}>
-          <TenantsAgeChartIndicator size="md" />
+          <TenantsAgeChartIndicator values={getTotalByAge(tenants)} isLoading={isFetchingTenants} size="md" />
         </Column>
         <Column size={5}>
-          <TenantsGenderChartIndicator size="md" />
+          <TenantsGenderChartIndicator values={getTotalByGender(tenants)} isLoading={isFetchingTenants} size="md" />
         </Column>
       </Row>
       <Row>

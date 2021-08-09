@@ -9,8 +9,8 @@ export default function DoughnutChart({ data, options }) {
         datasets: [
           ...data.datasets.map((dataset) => ({
             ...dataset,
-            backgroundColor: ["#32a5f3", "#35c9bc", "#fcde6b", "#def2ff"],
-            borderColor: ["#32a5f3", "#35c9bc", "#fcde6b", "#def2ff"],
+            backgroundColor: ["#32a5f3", "#35c9bc", "#fcde6b", "#def2ff", "#d7d7d7"],
+            borderColor: ["#32a5f3", "#35c9bc", "#fcde6b", "#def2ff", "#d7d7d7"],
           })),
         ],
       }}
