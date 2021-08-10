@@ -12,7 +12,7 @@ export default function DoughnutChartIndicator({ label, data, size, isLoading })
       <div style={{ height: height }}>
         {isLoading ? (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
-            <Spinner size={size} color={BLUE_1} />
+            <Spinner size="xs" color={BLUE_1} />
           </div>
         ) : (
           <DoughnutChart

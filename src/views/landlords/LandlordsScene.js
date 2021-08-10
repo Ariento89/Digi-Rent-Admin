@@ -17,11 +17,17 @@ import { useEffect, useState } from "react";
 import useNotification from "../../hooks/useNotification";
 import { getLandlords } from "../../services/usersService";
 import AsyncScreen from "../../core/layout/AsyncScreen";
+import {
+  getActiveLandlords,
+  getLandlordsByAge,
+  getLandlordsByGender,
+  getRegisteredLandlords,
+} from "../../utils/landlordsIndicators";
 
 export default function LandlordsScene() {
   const notify = useNotification();
   const [landlords, setLandlords] = useState([]);
-  const [isFetchingTable, loadLandlords] = useService(getLandlords, {
+  const [isFetching, loadLandlords] = useService(getLandlords, {
     onData: ({ data }) => setLandlords(data),
     onError: (error) => notify(error.text, "warning"),
   });
@@ -34,16 +40,24 @@ export default function LandlordsScene() {
     <div>
       <Row>
         <Column size={3}>
-          <LandlordsActiveAbsoluteValueIndicator size="lg" />
+          <LandlordsActiveAbsoluteValueIndicator
+            value={getActiveLandlords(landlords)}
+            isLoading={isFetching}
+            size="lg"
+          />
         </Column>
         <Column size={3}>
-          <LandlordsRegisteredAbsoluteValueIndicator size="lg" />
+          <LandlordsRegisteredAbsoluteValueIndicator
+            value={getRegisteredLandlords(landlords)}
+            isLoading={isFetching}
+            size="lg"
+          />
         </Column>
         <Column size={3}>
-          <LandlordsAgeChartIndicator size="sm" />
+          <LandlordsAgeChartIndicator values={getLandlordsByAge(landlords)} isLoading={isFetching} size="sm" />
         </Column>
         <Column size={3}>
-          <LandlordsGenderChartIndicator size="sm" />
+          <LandlordsGenderChartIndicator values={getLandlordsByGender(landlords)} isLoading={isFetching} size="sm" />
         </Column>
       </Row>
       <Separator size="md" />
@@ -53,7 +67,7 @@ export default function LandlordsScene() {
       </Row>
       <Row>
         <Card>
-          <AsyncScreen isLoading={isFetchingTable}>
+          <AsyncScreen isLoading={isFetching}>
             <Table
               columns={[
                 {

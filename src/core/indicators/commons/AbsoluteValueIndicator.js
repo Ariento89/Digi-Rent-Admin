@@ -33,7 +33,7 @@ export default function AbsoluteValueIndicator({ icon, label, value, size, prima
         >
           <span style={{ fontSize: "13px", color: GREY_6, marginBottom: "6px" }}>{label}</span>
           {isLoading ? (
-            <Spinner size={size} color={BLUE_1} />
+            <Spinner size="xs" color={BLUE_1} />
           ) : (
             <span
               style={{
