@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
+// import Header from "./Header";
 import Content from "./Content";
 
 export default function BaseLayout({ children }) {
@@ -41,7 +41,7 @@ export default function BaseLayout({ children }) {
         ]}
       />
       <div style={{ width: "calc(100% - 222px)" }}>
-        <Header />
+        {/* <Header /> */}
         <Content>{children}</Content>
       </div>
     </div>
