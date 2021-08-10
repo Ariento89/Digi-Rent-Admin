@@ -17,17 +17,34 @@ import { useEffect, useState } from "react";
 import useNotification from "../../hooks/useNotification";
 import { getTenants } from "../../services/usersService";
 import AsyncScreen from "../../core/layout/AsyncScreen";
+import {
+  getActiveTenants,
+  getRegisteredTenants,
+  getTenantsByAge,
+  getTenantsByGender,
+} from "../../utils/tenantsIndicators";
+import TenantsApplicationsAbsoluteValueIndicator from "../../core/indicators/TenantsApplicationsAbsoluteValueIndicator";
+import { getApplications } from "../../services/applicationsService";
+import { getTotalApplications } from "../../utils/applicationsIndicators";
 
 export default function TenantsScene() {
   const notify = useNotification();
   const [tenants, setTenants] = useState([]);
-  const [isFetchingTable, loadTenants] = useService(getTenants, {
+  const [applications, setApplications] = useState([]);
+
+  const [isFetchingTenants, loadTenants] = useService(getTenants, {
     onData: ({ data }) => setTenants(data),
+    onError: (error) => notify(error.text, "warning"),
+  });
+
+  const [isFetchingApplications, loadApplications] = useService(getApplications, {
+    onData: ({ data }) => setApplications(data),
     onError: (error) => notify(error.text, "warning"),
   });
 
   useEffect(() => {
     loadTenants();
+    loadApplications();
   }, []);
 
   return (
@@ -36,23 +53,39 @@ export default function TenantsScene() {
         <Column size={6}>
           <Row>
             <Column size={6}>
-              <TenantsActiveAbsoluteValueIndicator size="sm" />
+              <TenantsActiveAbsoluteValueIndicator
+                value={getActiveTenants(tenants)}
+                isLoading={isFetchingTenants}
+                size="sm"
+              />
             </Column>
             <Column size={6}>
-              <TenantsRegisteredAbsoluteValueIndicator size="sm" />
+              <TenantsRegisteredAbsoluteValueIndicator
+                value={getRegisteredTenants(tenants)}
+                isLoading={isFetchingTenants}
+                size="sm"
+              />
             </Column>
           </Row>
           <Row>
-            <TenantsRegisteredAbsoluteValueIndicator size="sm" />
+            <TenantsApplicationsAbsoluteValueIndicator
+              value={getTotalApplications(applications)}
+              isLoading={isFetchingApplications}
+              size="sm"
+            />
           </Row>
         </Column>
         <Column size={6}>
           <Row>
             <Column size={6}>
-              <TenantsAgeChartIndicator size="sm" />
+              <TenantsAgeChartIndicator values={getTenantsByAge(tenants)} isLoading={isFetchingTenants} size="sm" />
             </Column>
             <Column size={6}>
-              <TenantsGenderChartIndicator size="sm" />
+              <TenantsGenderChartIndicator
+                values={getTenantsByGender(tenants)}
+                isLoading={isFetchingTenants}
+                size="sm"
+              />
             </Column>
           </Row>
         </Column>
@@ -64,7 +97,7 @@ export default function TenantsScene() {
       </Row>
       <Row>
         <Card>
-          <AsyncScreen isLoading={isFetchingTable}>
+          <AsyncScreen isLoading={isFetchingTenants}>
             <Table
               columns={[
                 {
