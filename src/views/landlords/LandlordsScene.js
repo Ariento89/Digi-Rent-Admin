@@ -23,6 +23,7 @@ import {
   getLandlordsByGender,
   getRegisteredLandlords,
 } from "../../utils/landlordsIndicators";
+import { startCase } from "lodash";
 
 export default function LandlordsScene() {
   const notify = useNotification();
@@ -102,7 +103,9 @@ export default function LandlordsScene() {
                   accessor: "status",
                   Header: "Status",
                   width: "10%",
-                  Cell: (props) => <Badge label="Active" status="success" />,
+                  Cell: (props) => (
+                    <Badge label={startCase(props.value)} status={props.value === "active" ? "success" : "error"} />
+                  ),
                 },
                 {
                   accessor: "action",

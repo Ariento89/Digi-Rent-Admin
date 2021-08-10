@@ -26,6 +26,7 @@ import {
 import TenantsApplicationsAbsoluteValueIndicator from "../../core/indicators/TenantsApplicationsAbsoluteValueIndicator";
 import { getApplications } from "../../services/applicationsService";
 import { getTotalApplications } from "../../utils/applicationsIndicators";
+import { startCase } from "lodash";
 
 export default function TenantsScene() {
   const notify = useNotification();
@@ -132,7 +133,9 @@ export default function TenantsScene() {
                   accessor: "status",
                   Header: "Status",
                   width: "10%",
-                  Cell: (props) => <Badge label="Active" status="success" />,
+                  Cell: (props) => (
+                    <Badge label={startCase(props.value)} status={props.value === "active" ? "success" : "error"} />
+                  ),
                 },
                 {
                   accessor: "action",
