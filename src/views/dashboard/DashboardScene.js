@@ -14,19 +14,39 @@ import UniqueWebsiteVisitorsChartIndicator from "../../core/indicators/UniqueWeb
 import useNotification from "../../hooks/useNotification";
 import { useEffect, useState } from "react";
 import useService from "../../hooks/useService";
-import { getTenants } from "../../services/usersService";
-import { getActiveTenants, getRegisteredTenants, getTotalByAge, getTotalByGender } from "../../utils/tenantsIndicators";
+import { getLandlords, getTenants } from "../../services/usersService";
+import {
+  getActiveTenants,
+  getRegisteredTenants,
+  getTenantsByAge,
+  getTenantsByGender,
+} from "../../utils/tenantsIndicators";
 import { getApplications } from "../../services/applicationsService";
 import { getTotalApplications } from "../../utils/applicationsIndicators";
+import {
+  getActiveLandlords,
+  getLandlordsByAge,
+  getLandlordsByGender,
+  getRegisteredLandlords,
+} from "../../utils/landlordsIndicators";
 
 export default function DashboardScene() {
   const notify = useNotification();
+
   const [tenants, setTenants] = useState([]);
+  const [landlords, setLandlords] = useState([]);
   const [applications, setApplications] = useState([]);
+
   const [isFetchingTenants, loadTenants] = useService(getTenants, {
     onData: ({ data }) => setTenants(data),
     onError: (error) => notify(error.text, "warning"),
   });
+
+  const [isFetchingLandlords, loadLandlords] = useService(getLandlords, {
+    onData: ({ data }) => setLandlords(data),
+    onError: (error) => notify(error.text, "warning"),
+  });
+
   const [isFetchingApplications, loadApplications] = useService(getApplications, {
     onData: ({ data }) => setApplications(data),
     onError: (error) => notify(error.text, "warning"),
@@ -34,6 +54,7 @@ export default function DashboardScene() {
 
   useEffect(() => {
     loadTenants();
+    loadLandlords();
     loadApplications();
   }, []);
 
@@ -63,25 +84,37 @@ export default function DashboardScene() {
           </Row>
         </Column>
         <Column size={4}>
-          <TenantsAgeChartIndicator values={getTotalByAge(tenants)} isLoading={isFetchingTenants} size="md" />
+          <TenantsAgeChartIndicator values={getTenantsByAge(tenants)} isLoading={isFetchingTenants} size="md" />
         </Column>
         <Column size={5}>
-          <TenantsGenderChartIndicator values={getTotalByGender(tenants)} isLoading={isFetchingTenants} size="md" />
+          <TenantsGenderChartIndicator values={getTenantsByGender(tenants)} isLoading={isFetchingTenants} size="md" />
         </Column>
       </Row>
       <Row>
         <Column size={5}>
-          <LandlordsGenderChartIndicator size="md" />
+          <LandlordsGenderChartIndicator
+            values={getLandlordsByGender(landlords)}
+            isLoading={isFetchingLandlords}
+            size="md"
+          />
         </Column>
         <Column size={4}>
-          <LandlordsAgeChartIndicator size="md" />
+          <LandlordsAgeChartIndicator values={getLandlordsByAge(landlords)} isLoading={isFetchingLandlords} size="md" />
         </Column>
         <Column size={3}>
           <Row>
-            <LandlordsRegisteredAbsoluteValueIndicator size="md" />
+            <LandlordsRegisteredAbsoluteValueIndicator
+              value={getRegisteredLandlords(landlords)}
+              isLoading={isFetchingLandlords}
+              size="md"
+            />
           </Row>
           <Row>
-            <LandlordsActiveAbsoluteValueIndicator size="md" />
+            <LandlordsActiveAbsoluteValueIndicator
+              value={getActiveLandlords(landlords)}
+              isLoading={isFetchingLandlords}
+              size="md"
+            />
           </Row>
         </Column>
       </Row>

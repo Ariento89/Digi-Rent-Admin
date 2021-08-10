@@ -11,7 +11,6 @@ export default function TenantsGenderChartIndicator({ size, isLoading, values })
         labels: ["Female Tenant", "Male Tenant", "N/A"],
         datasets: [
           {
-            label: "# of Votes",
             data: values,
           },
         ],

@@ -1,17 +1,17 @@
 import DoughnutChartIndicator from "./commons/DoughnutChartIndicator";
 import PropTypes from "prop-types";
 
-export default function LandlordsAgeChartIndicator({ size }) {
+export default function LandlordsAgeChartIndicator({ size, values, isLoading }) {
   return (
     <DoughnutChartIndicator
       label="Landlord Age"
+      isLoading={isLoading}
       size={size}
       data={{
-        labels: ["18-25", "26-35", "36-45", "56+"],
+        labels: ["18-25", "26-35", "36-45", "56+", "N/A"],
         datasets: [
           {
-            label: "# of Votes",
-            data: [533, 112, 214, 244],
+            data: values,
           },
         ],
       }}
@@ -21,4 +21,10 @@ export default function LandlordsAgeChartIndicator({ size }) {
 
 LandlordsAgeChartIndicator.propTypes = {
   size: PropTypes.string.isRequired,
+  values: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
+};
+
+LandlordsAgeChartIndicator.propTypes = {
+  isLoading: false,
 };
