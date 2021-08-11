@@ -18,33 +18,57 @@ import useNotification from "../../hooks/useNotification";
 import { useEffect } from "react";
 import AsyncScreen from "../../core/layout/AsyncScreen";
 import { useState } from "react";
+import { startCase } from "lodash";
+import { getActiveApartments, getRegisteredApartments } from "../../utils/apartmentsIndicators";
+import { getApplications } from "../../services/applicationsService";
+import { getTotalApplications } from "../../utils/applicationsIndicators";
 
 export default function PropertiesScene() {
   const notify = useNotification();
   const [apartments, setApartments] = useState([]);
-  const [isFetchingTable, loadApartments] = useService(getApartments, {
+  const [applications, setApplications] = useState([]);
+
+  const [isFetchingApartments, loadApartments] = useService(getApartments, {
     onData: ({ data }) => setApartments(data),
+    onError: (error) => notify(error.text, "warning"),
+  });
+
+  const [isFetchingApplications, loadApplications] = useService(getApplications, {
+    onData: ({ data }) => setApplications(data),
     onError: (error) => notify(error.text, "warning"),
   });
 
   useEffect(() => {
     loadApartments();
+    loadApplications();
   }, []);
 
   return (
     <div>
       <Row>
         <Column size={3}>
-          <TotalPropertiesAbsoluteValueIndicator />
+          <TotalPropertiesAbsoluteValueIndicator
+            value={getRegisteredApartments(apartments)}
+            isLoading={isFetchingApartments}
+          />
         </Column>
         <Column size={3}>
-          <PropertiesActiveAbsoluteValueIndicator />
+          <PropertiesActiveAbsoluteValueIndicator
+            value={getActiveApartments(apartments)}
+            isLoading={isFetchingApartments}
+          />
         </Column>
         <Column size={3}>
-          <PropertiesDisplayedAbsoluteValueIndicator />
+          <PropertiesDisplayedAbsoluteValueIndicator
+            value={getRegisteredApartments(apartments)}
+            isLoading={isFetchingApartments}
+          />
         </Column>
         <Column size={3}>
-          <TotalApplicationsAbsoluteValueIndicator />
+          <TotalApplicationsAbsoluteValueIndicator
+            value={getTotalApplications(applications)}
+            isLoading={isFetchingApplications}
+          />
         </Column>
       </Row>
       <Separator size="md" />
@@ -54,7 +78,7 @@ export default function PropertiesScene() {
       </Row>
       <Row>
         <Card>
-          <AsyncScreen isLoading={isFetchingTable}>
+          <AsyncScreen isLoading={isFetchingApartments}>
             <Table
               columns={[
                 {
@@ -65,17 +89,17 @@ export default function PropertiesScene() {
                   Cell: (props) => <input type="checkbox" />,
                 },
                 {
-                  accessor: "apartment.name",
+                  accessor: "name",
                   Header: "Property name",
                   width: "50%",
                 },
                 {
-                  accessor: "apartment",
+                  accessor: "status",
                   Header: "Status",
                   width: "10%",
-                  Cell: (props) => {
-                    return <Badge label="Active" status="success" />;
-                  },
+                  Cell: (props) => (
+                    <Badge label={startCase(props.value)} status={props.value === "active" ? "success" : "error"} />
+                  ),
                 },
                 {
                   accessor: "action",
