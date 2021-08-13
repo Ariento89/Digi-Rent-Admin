@@ -74,20 +74,19 @@ export default function PropertiesScene() {
       <Separator size="md" />
       <Row alignItems="center" justifyContent="space-between">
         <PageTitle title="Properties List" />
-        <PropertiesFilter />
       </Row>
       <Row>
         <Card>
           <AsyncScreen isLoading={isFetchingApartments}>
             <Table
               columns={[
-                {
-                  accessor: "checkbox",
-                  width: "5%",
-                  textAlign: "center",
-                  Header: (props) => <input type="checkbox" />,
-                  Cell: (props) => <input type="checkbox" />,
-                },
+                // {
+                //   accessor: "checkbox",
+                //   width: "5%",
+                //   textAlign: "center",
+                //   Header: (props) => <input type="checkbox" />,
+                //   Cell: (props) => <input type="checkbox" />,
+                // },
                 {
                   accessor: "name",
                   Header: "Property name",
@@ -101,19 +100,19 @@ export default function PropertiesScene() {
                     <Badge label={startCase(props.value)} status={props.value === "active" ? "success" : "error"} />
                   ),
                 },
-                {
-                  accessor: "action",
-                  Header: "Action",
-                  width: "35%",
-                  Cell: (props) => (
-                    <div style={{ display: "flex" }}>
-                      <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
-                      <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
-                      <Button icon="favorite" iconColor={BLUE_1} fontColor={GREY_6} iconSize="md" label="Archive" />
-                      <Button fontColor={BLUE_1} iconSize="md" label="Details" />
-                    </div>
-                  ),
-                },
+                // {
+                //   accessor: "action",
+                //   Header: "Action",
+                //   width: "35%",
+                //   Cell: (props) => (
+                //     <div style={{ display: "flex" }}>
+                //       <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
+                //       <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
+                //       <Button icon="favorite" iconColor={BLUE_1} fontColor={GREY_6} iconSize="md" label="Archive" />
+                //       <Button fontColor={BLUE_1} iconSize="md" label="Details" />
+                //     </div>
+                //   ),
+                // },
               ]}
               data={apartments}
             />

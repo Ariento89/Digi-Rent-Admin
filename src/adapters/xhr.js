@@ -32,13 +32,16 @@ function axiosInstance() {
 
 export async function get(url) {
   const api = axiosInstance();
-  return await api.get(`${url}`);
+  return await api.get(url);
 }
 
-export async function post(url, body) {
+export async function post(url, body, isFormData = false) {
   const api = axiosInstance();
-  const formData = new FormData();
-  keys(body).reduce((_, key) => formData.append(key, body[key]), []);
 
-  return await api.post(`${url}`, formData);
+  if (isFormData) {
+    const formData = new FormData();
+    keys(body).reduce((_, key) => formData.append(key, body[key]), []);
+    return await api.post(url, formData);
+  }
+  return await api.post(url, body);
 }

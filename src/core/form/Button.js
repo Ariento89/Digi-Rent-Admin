@@ -19,6 +19,7 @@ export default function Button({
   isDisabled,
   isLoading,
   isFullWidth,
+  rotateIcon,
 }) {
   return (
     <button
@@ -47,7 +48,7 @@ export default function Button({
         <Spinner size="xs" />
       ) : (
         <>
-          {icon && <Icon name={icon} size={iconSize} color={iconColor ? iconColor : fontColor} />}
+          {icon && <Icon name={icon} size={iconSize} color={iconColor ? iconColor : fontColor} rotate={rotateIcon} />}
           {label && (
             <span
               style={{
@@ -83,11 +84,13 @@ Button.propTypes = {
   fontFamily: PropTypes.string,
   iconSize: PropTypes.string,
   rounded: PropTypes.bool,
+  rotateIcon: PropTypes.string,
 };
 
 Button.defaultProps = {
   label: null,
   icon: null,
+  rotateIcon: null,
   isIconButton: false,
   isDisabled: false,
   isFullWidth: false,

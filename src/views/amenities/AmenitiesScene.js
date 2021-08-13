@@ -35,13 +35,13 @@ export default function AmenitiesScene() {
           <AsyncScreen isLoading={isFetchingTable}>
             <Table
               columns={[
-                {
-                  accessor: "checkbox",
-                  width: "5%",
-                  textAlign: "center",
-                  Header: (props) => <input type="checkbox" />,
-                  Cell: (props) => <input type="checkbox" />,
-                },
+                // {
+                //   accessor: "checkbox",
+                //   width: "5%",
+                //   textAlign: "center",
+                //   Header: (props) => <input type="checkbox" />,
+                //   Cell: (props) => <input type="checkbox" />,
+                // },
                 {
                   accessor: "title",
                   Header: "Amenity name",
@@ -55,7 +55,6 @@ export default function AmenitiesScene() {
                     <div style={{ display: "flex" }}>
                       <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
                       <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
-                      <Button icon="favorite" iconColor={BLUE_1} fontColor={GREY_6} iconSize="md" label="Save" />
                     </div>
                   ),
                 },

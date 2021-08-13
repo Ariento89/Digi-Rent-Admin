@@ -94,20 +94,19 @@ export default function TenantsScene() {
       <Separator size="md" />
       <Row alignItems="center" justifyContent="space-between">
         <PageTitle title="Tenants List" />
-        <TenantsFilter />
       </Row>
       <Row>
         <Card>
           <AsyncScreen isLoading={isFetchingTenants}>
             <Table
               columns={[
-                {
-                  accessor: "checkbox",
-                  width: "5%",
-                  textAlign: "center",
-                  Header: (props) => <input type="checkbox" />,
-                  Cell: (props) => <input type="checkbox" />,
-                },
+                // {
+                //   accessor: "checkbox",
+                //   width: "5%",
+                //   textAlign: "center",
+                //   Header: (props) => <input type="checkbox" />,
+                //   Cell: (props) => <input type="checkbox" />,
+                // },
                 {
                   accessor: "id",
                   Header: "ID",
@@ -137,18 +136,18 @@ export default function TenantsScene() {
                     <Badge label={startCase(props.value)} status={props.value === "active" ? "success" : "error"} />
                   ),
                 },
-                {
-                  accessor: "action",
-                  Header: "Action",
-                  width: "15%",
-                  Cell: (props) => (
-                    <div style={{ display: "flex" }}>
-                      <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
-                      <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
-                      <Button fontColor={BLUE_1} iconSize="md" label="Details" />
-                    </div>
-                  ),
-                },
+                // {
+                //   accessor: "action",
+                //   Header: "Action",
+                //   width: "15%",
+                //   Cell: (props) => (
+                //     <div style={{ display: "flex" }}>
+                //       <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
+                //       <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
+                //       <Button fontColor={BLUE_1} iconSize="md" label="Details" />
+                //     </div>
+                //   ),
+                // },
               ]}
               data={tenants}
             />

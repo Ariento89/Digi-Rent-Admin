@@ -18,7 +18,7 @@ import HeartIcon from "../icons/HeartIcon";
 import DisplayIcon from "../icons/DisplayIcon";
 import AddIcon from "../icons/AddIcon";
 
-export default function Icon({ name, size, color }) {
+export default function Icon({ name, size, color, rotate }) {
   return (
     <div
       style={{
@@ -26,6 +26,7 @@ export default function Icon({ name, size, color }) {
         alignItems: "center",
         justifyContent: "center",
         width: { sm: "18px", md: "24px" }[size],
+        transform: `rotate(${rotate})`,
       }}
     >
       {name === "home" && <HomeIcon color={color} />}
@@ -73,9 +74,11 @@ Icon.propTypes = {
   ]).isRequired,
   size: PropTypes.oneOf(["sm", "md"]),
   color: PropTypes.string,
+  rotate: PropTypes.string,
 };
 
 Icon.defaultProps = {
   size: "sm",
   color: "#fff",
+  rotate: "none",
 };
