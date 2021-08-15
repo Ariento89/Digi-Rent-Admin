@@ -8,8 +8,6 @@ import PageTitle from "../../core/layout/PageTitle";
 import Separator from "../../core/layout/Separator";
 import Card from "../../core/layout/Card";
 import Table from "../../core/layout/Table";
-import Button from "../../core/form/Button";
-import { BLUE_1, GREY_6, RED_1 } from "../../consts/colors";
 import Badge from "../../core/layout/Badge";
 import useService from "../../hooks/useService";
 import { useEffect, useState } from "react";
@@ -70,13 +68,6 @@ export default function LandlordsScene() {
           <AsyncScreen isLoading={isFetching}>
             <Table
               columns={[
-                // {
-                //   accessor: "checkbox",
-                //   width: "5%",
-                //   textAlign: "center",
-                //   Header: (props) => <input type="checkbox" />,
-                //   Cell: (props) => <input type="checkbox" />,
-                // },
                 {
                   accessor: "id",
                   Header: "ID",
@@ -106,18 +97,6 @@ export default function LandlordsScene() {
                     <Badge label={startCase(props.value)} status={props.value === "active" ? "success" : "error"} />
                   ),
                 },
-                // {
-                //   accessor: "action",
-                //   Header: "Action",
-                //   width: "15%",
-                //   Cell: (props) => (
-                //     <div style={{ display: "flex" }}>
-                //       <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
-                //       <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
-                //       <Button fontColor={BLUE_1} iconSize="md" label="Details" />
-                //     </div>
-                //   ),
-                // },
               ]}
               data={landlords}
             />

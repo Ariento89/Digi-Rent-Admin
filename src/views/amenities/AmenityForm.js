@@ -1,19 +1,29 @@
+import { isEmpty } from "lodash";
+import { useHistory } from "react-router-dom";
 import { BLUE_1 } from "../../consts/colors";
 import Button from "../../core/form/Button";
 import TextInput from "../../core/form/TextInput";
 import Card from "../../core/layout/Card";
 import Separator from "../../core/layout/Separator";
 import useForm from "../../hooks/useForm";
+import useNotification from "../../hooks/useNotification";
 import useService from "../../hooks/useService";
 import { createAmenity } from "../../services/amenitiesService";
 import isRequired from "../../validators/isRequired";
 
 export default function NewAmenityForm() {
+  const history = useHistory();
+  const notify = useNotification();
+
   const [isFetching, addAmenity] = useService(createAmenity, {
     onData: (data) => {
-      console.log("amenity", data);
+      if (!isEmpty(data)) {
+        history.push("/amenities");
+        notify("Amenity created", "info");
+      }
     },
     onError: (error) => {
+      notify("Error creating amenity. Try again.", "error");
       console.log("error", error);
     },
   });

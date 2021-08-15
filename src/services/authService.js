@@ -6,13 +6,17 @@ import safeCall from "./safeCall";
 export const login = async (payload) => {
   const { data } = await safeCall(
     async () =>
-      await post("admin/auth", {
-        username: payload.email,
-        password: payload.password,
-        grant_type: "password",
-        client_id: null,
-        client_secret: null,
-      }),
+      await post(
+        "admin/auth",
+        {
+          username: payload.email,
+          password: payload.password,
+          grant_type: "password",
+          client_id: null,
+          client_secret: null,
+        },
+        true
+      ),
     "error_authentication",
     "Unexpected error to authenticate user"
   );

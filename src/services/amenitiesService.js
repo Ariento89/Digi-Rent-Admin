@@ -11,7 +11,7 @@ export const getAmenities = async () => {
 
 export const createAmenity = async (payload) => {
   return await safeCall(
-    async () => await post("amenities", payload),
+    async () => await post("admin/amenities", payload),
     "error_create_amenity",
     "Unexpected error to create amenity"
   );

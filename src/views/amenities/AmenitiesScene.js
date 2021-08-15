@@ -3,8 +3,6 @@ import PageTitle from "../../core/layout/PageTitle";
 import AmenitiesFilter from "./AmenitiesFilter";
 import Card from "../../core/layout/Card";
 import Table from "../../core/layout/Table";
-import Button from "../../core/form/Button";
-import { BLUE_1, GREY_6, RED_1 } from "../../consts/colors";
 import useNotification from "../../hooks/useNotification";
 import { useState } from "react";
 import useService from "../../hooks/useService";
@@ -35,28 +33,10 @@ export default function AmenitiesScene() {
           <AsyncScreen isLoading={isFetchingTable}>
             <Table
               columns={[
-                // {
-                //   accessor: "checkbox",
-                //   width: "5%",
-                //   textAlign: "center",
-                //   Header: (props) => <input type="checkbox" />,
-                //   Cell: (props) => <input type="checkbox" />,
-                // },
                 {
                   accessor: "title",
                   Header: "Amenity name",
                   width: "70%",
-                },
-                {
-                  accessor: "action",
-                  Header: "Action",
-                  width: "25%",
-                  Cell: (props) => (
-                    <div style={{ display: "flex" }}>
-                      <Button icon="edit" fontColor={GREY_6} iconSize="md" label="Edit" />
-                      <Button icon="remove" iconColor={RED_1} fontColor={GREY_6} iconSize="md" label="Delete" />
-                    </div>
-                  ),
                 },
               ]}
               data={amenities}

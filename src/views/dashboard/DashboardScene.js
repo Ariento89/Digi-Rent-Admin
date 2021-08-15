@@ -9,8 +9,6 @@ import LandlordsGenderChartIndicator from "../../core/indicators/LandlordsGender
 import LandlordsAgeChartIndicator from "../../core/indicators/LandlordsAgeChartIndicator";
 import LandlordsRegisteredAbsoluteValueIndicator from "../../core/indicators/LandlordsRegisteredAbsoluteValueIndicator";
 import LandlordsActiveAbsoluteValueIndicator from "../../core/indicators/LandlordsActiveAbsoluteValueIndicator";
-import BlogDetailsTableIndicator from "../../core/indicators/BlogDetailsTableIndicator";
-import UniqueWebsiteVisitorsChartIndicator from "../../core/indicators/UniqueWebsiteVisitorsChartIndicator";
 import useNotification from "../../hooks/useNotification";
 import { useEffect, useState } from "react";
 import useService from "../../hooks/useService";
@@ -116,14 +114,6 @@ export default function DashboardScene() {
               size="md"
             />
           </Row>
-        </Column>
-      </Row>
-      <Row>
-        <Column size={7}>
-          <BlogDetailsTableIndicator />
-        </Column>
-        <Column size={5}>
-          <UniqueWebsiteVisitorsChartIndicator />
         </Column>
       </Row>
     </div>
