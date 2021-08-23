@@ -1,0 +1,37 @@
+name: Deploy App
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "The image tag to deploy"
+        required: true
+
+env:
+  IMAGE_ID: ghcr.io/ariento89/digirent-nginx
+  PAT: ${{ secrets.PAT }}
+  GITHUB_USERNAME: ariento89
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          port: ${{ secrets.DO_PORT }}
+          envs: IMAGE_ID, VERSION, PAT
+          script: |
+            cd ~/Digirent
+            rm -rf admin
+            mkdir admin
+            docker login ghcr.io -u $GITHUB_USERNAME --password $PAT
+            docker pull $IMAGE_ID:$VERSION
+            docker-compose -f docker-compose.staging.yml up --remove-orphans -d --force-recreate
