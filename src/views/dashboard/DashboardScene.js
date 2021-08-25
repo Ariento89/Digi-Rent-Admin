@@ -27,6 +27,8 @@ import {
   getLandlordsByGender,
   getRegisteredLandlords,
 } from "../../utils/landlordsIndicators";
+import UniqueWebsiteVisitorsChartIndicator from "../../core/indicators/UniqueWebsiteVisitorsChartIndicator";
+import BlogDetailsTableIndicator from "../../core/indicators/BlogDetailsTableIndicator";
 
 export default function DashboardScene() {
   const notify = useNotification();
@@ -114,6 +116,14 @@ export default function DashboardScene() {
               size="md"
             />
           </Row>
+        </Column>
+      </Row>
+      <Row>
+        <Column size={7}>
+          <BlogDetailsTableIndicator />
+        </Column>
+        <Column size={5}>
+          <UniqueWebsiteVisitorsChartIndicator />
         </Column>
       </Row>
     </div>
